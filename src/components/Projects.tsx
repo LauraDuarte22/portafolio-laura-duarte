@@ -2,130 +2,159 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import {
+  HiOutlineChartBar,
+  HiOutlineCog,
+  HiOutlineGlobeAlt,
+  HiOutlineAcademicCap,
+} from "react-icons/hi";
+
+const typeIcon: Record<string, JSX.Element> = {
+  "Desarrollo Web": <HiOutlineGlobeAlt size={32} />,
+  "Análisis de Datos": <HiOutlineChartBar size={32} />,
+  Automatización: <HiOutlineCog size={32} />,
+  "Proyecto Académico": <HiOutlineAcademicCap size={32} />,
+};
 
 const projects = [
   {
-    title: "Desarrollo Web",
+    title: "Posting",
+    type: "Desarrollo Web",
     description:
-      "Desarrollo de aplicaciones web modernas con React y Next.js, enfocadas en rendimiento, escalabilidad y experiencia de usuario.",
-    image: "/images/projects/web.png",
-    tags: ["React", "Next.js", "Tailwind"],
+      "Plataforma web desarrollada para una agencia creativa y de estrategia digital, enfocada en comunicar su propuesta de valor mediante una experiencia visual clara y alineada con la identidad de marca.",
+    url: "https://posting.com.co",
+    image: "/images/projects/posting.png",
+    tags: ["Next.js", "React", "Tailwind"],
   },
   {
-    title: "Análisis de Datos",
+    title: "Contact Center Grupo",
+    type: "Desarrollo Web",
     description:
-      "Diseño de dashboards interactivos a partir de procesos ETL, integración de múltiples fuentes y visualización de información estratégica.",
-    image: "/images/projects/data.png",
-    tags: ["SQL", "Power BI", "ETL"],
+      "Sitio institucional para una empresa BPO especializada en Contact Center y transformación digital, destacando servicios de omnicanalidad, inteligencia artificial y análisis de datos.",
+    url: "http://ccgrupo.com.co/",
+    image: "/images/projects/ccgrupo.png",
+    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
-    title: "Automatización de Procesos",
+    title: "Automatización de Respuestas en Instagram",
+    type: "Automatización",
     description:
-      "Automatización de flujos de trabajo con n8n e integración de APIs, reduciendo tareas manuales y optimizando procesos operativos.",
+      "Automatización inteligente para gestionar comentarios en Instagram en tiempo real, clasificando la intención del usuario y respondiendo de forma contextual mediante modelos de lenguaje.",
     image: "/images/projects/automation.png",
-    tags: ["n8n", "APIs", "Automation"],
+    tags: ["n8n", "OpenAI", "Webhooks"],
   },
-];
-
-const webProjects = [
-  { name: "Posting", url: "https://posting.com.co" },
-  { name: "Contact Center Grupo", url: "http://ccgrupo.com.co/" },
-  { name: "Justicia Racial", url: "http://justiciaracial.org/" },
-  { name: "Mataron al Río", url: "https://mataron-al-rio-drab.vercel.app/" },
+  {
+    title: "ETL & Dashboards Automatizados",
+    type: "Análisis de Datos",
+    description:
+      "Procesos ETL para la extracción automática de datos y alimentación de tableros de control confiables, apoyando la toma de decisiones basada en datos.",
+    tags: ["SQL", "ETL", "Power BI"],
+  },
+  {
+    title: "Justicia Racial",
+    type: "Desarrollo Web",
+    description:
+      "Plataforma web para un equipo de abogados defensores de derechos humanos, enfocada en visibilizar procesos de justicia social y acompañamiento comunitario.",
+    tags: ["React", "UX/UI"],
+  },
+  {
+    title: "Mataron al Río",
+    type: "Proyecto Académico",
+    description:
+      "Proyecto web interactivo creado como apoyo a una tesis universitaria, enfocado en la narración de crónicas digitales con una experiencia visual cuidada.",
+    tags: ["Next.js", "Framer Motion"],
+  },
 ];
 
 export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto space-y-28">
+      <div className="max-w-7xl mx-auto space-y-20">
 
         {/* Header */}
-        <div className="space-y-4 max-w-2xl">
-          <h2 className="text-primary font-bold text-4xl">
+        <div className="max-w-2xl space-y-4">
+          <h2 className="text-4xl font-bold text-primary">
             Proyectos
           </h2>
           <p className="text-muted text-lg">
-            Una selección de proyectos que reflejan mi experiencia en desarrollo
-            web, datos y automatización de procesos.
+            Proyectos reales donde he aplicado desarrollo web, análisis de datos
+            y automatización para resolver problemas concretos.
           </p>
         </div>
 
-        {/* Cards */}
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.35 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ y: -6 }}
-            className="relative rounded-2xl border border-muted/30 bg-background/60 backdrop-blur-xl p-8 shadow-xl"
-          >
-            {/* Header */}
-            <div className="flex items-start gap-6">
-          
-              <div>
-                <h3 className="text-2xl font-semibold text-primary">
-                  {project.title}
-                </h3>
-
-                <p className="text-lg mt-2 max-w-2xl">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-sm px-3 py-1 rounded-full border border-muted text-muted"
-                    >
-                      {tag}
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {projects.map((project, i) => (
+            <motion.a
+              key={project.title}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.05 }}
+              whileHover={{ y: -6 }}
+              className="group rounded-2xl border border-muted/30 bg-background/60
+                         backdrop-blur-xl p-8 shadow-lg transition"
+            >
+              {/* Imagen o placeholder */}
+              {project.image ? (
+                <div className="relative w-full h-44 rounded-xl overflow-hidden mb-6">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              ) : (
+                <div className="w-full h-44 rounded-xl mb-6 flex items-center justify-center
+                                bg-gradient-to-br from-primary/20 via-background to-secondary/20
+                                border border-muted/30">
+                  <div className="flex flex-col items-center gap-2 text-primary/70">
+                    {typeIcon[project.type]}
+                    <span className="text-xs uppercase tracking-widest">
+                      {project.type}
                     </span>
-                  ))}
+                  </div>
                 </div>
+              )}
+
+              {/* Content */}
+              <span className="text-xs uppercase tracking-wide text-primary">
+                {project.type}
+              </span>
+
+              <h3 className="text-2xl font-semibold mt-2 group-hover:text-primary transition">
+                {project.title}
+              </h3>
+
+              <p className="text-muted mt-3">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-5">
+                {project.tags.map(tag => (
+                  <span
+                    key={tag}
+                    className="text-xs px-3 py-1 rounded-full border border-muted text-muted"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </div>
+            </motion.a>
+          ))}
+        </div>
 
-            {/* Proyectos Web */}
-            {project.title === "Desarrollo Web" && (
-              <div className="mt-10">
-                <h4 className="text-sm uppercase tracking-wider text-muted mb-6">
-                  Proyectos destacados
-                </h4>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {webProjects.map((site, i) => (
-                    <motion.a
-                      key={site.name}
-                      href={site.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.08 }}
-                      whileHover={{ scale: 1.03 }}
-                      className="group relative rounded-xl border border-muted/30 bg-background/40 p-5 backdrop-blur hover:border-primary hover:shadow-[0_0_0_1px_rgba(168,85,247,0.4)] transition"
-                    >
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <p className="font-medium text-foreground group-hover:text-primary transition">
-                            {site.name}
-                          </p>
-                          <span className="text-xs text-muted break-all">
-                            {site.url.replace("https://", "").replace("http://", "")}
-                          </span>
-                        </div>
-
-                        <FaExternalLinkAlt className="text-muted group-hover:text-primary transition" />
-                      </div>
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-            )}
-          </motion.div>
-        ))}
+        {/* Cierre */}
+        <p className="text-center text-muted">
+          ¿Quieres ver cómo puedo aportar a tu proyecto?{" "}
+          <a href="#contact" className="text-primary underline">
+            Hablemos
+          </a>
+        </p>
       </div>
     </section>
   );
