@@ -1,37 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
+import { FaArrowDown } from "react-icons/fa";
 
 export default function About() {
   return (
-    <section id="about" className="py-12 px-6 md:px-20">
+    <section id="about" className="py-6 px-6 md:px-20">
       <motion.div
-    
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-120px" }}
-        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
+        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
       >
         {/* Texto principal */}
         <motion.div className="space-y-6">
@@ -47,61 +26,89 @@ export default function About() {
           </h2>
 
           <p className="text-lg">
-            Soy <span className="text-foreground font-medium">Ingeniera de Sistemas</span>{" "}
-            con experiencia en el diseño de soluciones que integran{" "}
-            <span className="text-foreground font-medium">
-              análisis de datos, automatización de procesos y desarrollo web
-            </span>
-            .
+            Soy <span className="font-medium">Ingeniera de Sistemas</span> con un
+            enfoque orientado al análisis de datos y al desarrollo de soluciones
+            tecnológicas que optimizan procesos y apoyan la toma de decisiones.
           </p>
 
+          <p className="text-lg">
+            A lo largo de mi experiencia he trabajado en la recolección,
+            transformación y análisis de información, integrando distintas
+            fuentes de datos para convertirlos en información clara, confiable y
+            accionable para el negocio.
+          </p>
+
+          <p className="text-lg">
+            Me interesa especialmente construir soluciones completas, donde el
+            análisis de datos, la automatización de procesos y el desarrollo web
+            se conectan para crear productos eficientes, escalables y con una
+            buena experiencia de usuario.
+          </p>
         </motion.div>
 
         {/* Cards de habilidades */}
-        <motion.div
-       
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-        >
-          <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
-            <h3 className="font-semibold mb-2 text-primary">
-              Análisis de datos
-            </h3>
-            <p className="text-sm text-foreground">
-              ETL, SQL, Power BI, Looker Studio, limpieza y transformación de
-              datos para generar información estratégica.
-            </p>
-          </div>
+        <motion.div className="w-full flex items-center justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+            <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-semibold mb-2 text-primary">
+                Análisis de datos
+              </h3>
+              <p className="text-sm text-foreground">
+                Experiencia en procesos ETL, consultas SQL y modelado de datos,
+                orientados a la construcción de dashboards y reportes que facilitan
+                el análisis y la toma de decisiones estratégicas.
+              </p>
+            </div>
 
-          <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
-            <h3 className="font-semibold mb-2 text-primary">
-              Automatización
-            </h3>
-            <p className="text-sm text-foreground">
-              Automatización de flujos con n8n, integración de APIs y reducción
-              de tareas manuales en procesos operativos.
-            </p>
-          </div>
+            <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-semibold mb-2 text-primary">
+                Automatización de procesos
+              </h3>
+              <p className="text-sm text-foreground">
+                Automatización de flujos de trabajo mediante herramientas como n8n
+                e integración de APIs, reduciendo tareas manuales y mejorando la
+                eficiencia operativa.
+              </p>
+            </div>
 
-          <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
-            <h3 className="font-semibold mb-2 text-primary">
-              Desarrollo Web
-            </h3>
-            <p className="text-sm text-foreground">
-              Desarrollo de interfaces modernas con React, Next.js, Tailwind CSS
-              y buenas prácticas de UX/UI.
-            </p>
-          </div>
+            <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-semibold mb-2 text-primary">
+                Desarrollo web
+              </h3>
+              <p className="text-sm text-foreground">
+                Desarrollo de aplicaciones web modernas utilizando React,
+                Next.js y Tailwind CSS, con enfoque en buenas prácticas,
+                rendimiento y experiencia de usuario.
+              </p>
+            </div>
 
-          <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
-            <h3 className="font-semibold mb-2 text-primary">
-              Integración de sistemas
-            </h3>
-            <p className="text-sm text-foreground">
-              Conexión de plataformas, CRMs y servicios externos mediante APIs
-              para soluciones completas y escalables.
-            </p>
+            <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">
+              <h3 className="font-semibold mb-2 text-primary">
+                Integración de sistemas
+              </h3>
+              <p className="text-sm text-foreground">
+                Integración de diferentes plataformas y servicios mediante APIs,
+                conectando sistemas para construir soluciones tecnológicas
+                completas y escalables.
+              </p>
+            </div>
           </div>
         </motion.div>
+
+      </motion.div>
+      {/* Flecha */}
+      <motion.div
+        animate={{ y: [0, 12, 0] }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="flex justify-center mt-12"
+      >
+        <a href="#projects">
+          <FaArrowDown size={24} className="text-primary hover:opacity-80 transition" />
+        </a>
       </motion.div>
     </section>
   );

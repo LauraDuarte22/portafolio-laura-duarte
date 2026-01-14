@@ -3,50 +3,18 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
-
-const imageAnim = {
-  hidden: { opacity: 0, scale: 0.95 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-};
 
 export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col items-center px-6 md:px-20 mt-20">
-      <motion.div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-[30%_70%] items-center gap-12">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-[40%_60%] items-center">
 
         {/* Imagen */}
         <motion.div
-       
-          initial="hidden"
-          animate="show"
-          className="flex justify-center md:justify-start"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex justify-center md:justify-center"
         >
           <Image
             src="/images/laura.jpeg"
@@ -59,44 +27,47 @@ export default function Hero() {
         </motion.div>
 
         {/* Texto */}
-        <motion.div
-      
-          initial="hidden"
-          animate="show"
-          className="space-y-6"
-        >
+        <div className="space-y-6">
           <motion.h1
-            
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-5xl md:text-6xl font-bold leading-tight"
           >
             Hola, soy <span className="text-primary">Laura</span>
           </motion.h1>
 
           <motion.span
-          
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="text-sm text-primary uppercase tracking-wide block"
           >
             Ingeniera de Sistemas
           </motion.span>
 
           <motion.p
-          
-            className="text-lg text-primary max-w-xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="text-lg text-foreground max-w-xl"
           >
             Desarrollo soluciones que integran{" "}
-            <span className="text-foreground font-medium">
+            <span className="font-medium">
               análisis de datos, automatización de procesos y desarrollo web
             </span>
             , creando productos eficientes y orientados a la toma de decisiones.
           </motion.p>
 
           <motion.div
-          
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="flex flex-wrap gap-4 pt-4"
           >
             <a
               href="#projects"
-              className="bg-primary text-background px-6 py-3 rounded-lg font-medium hover:bg-primary/80 transition"
+              className="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/80 transition"
             >
               Ver proyectos
             </a>
@@ -108,24 +79,23 @@ export default function Hero() {
               Contacto
             </a>
           </motion.div>
-        </motion.div>
+        </div>
+      </div>
 
-      </motion.div>
-
-      {/*flecha */}
+      {/* Flecha */}
       <motion.div
-        animate={{ y: 12 }}
+        animate={{ y: [0, 12, 0] }}
         transition={{
           duration: 2,
           repeat: Infinity,
-          repeatType: "reverse",
           ease: "easeInOut",
         }}
         className="flex justify-center mt-12"
       >
         <a href="#about">
-          <FaArrowDown size={24} className="text-gray-500 hover:text-gray-800 transition-colors" />
+          <FaArrowDown size={24} className="text-primary hover:opacity-80 transition" />
         </a>
       </motion.div>
-    </section >
-  )}
+    </section>
+  );
+}

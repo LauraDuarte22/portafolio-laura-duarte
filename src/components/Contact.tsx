@@ -3,13 +3,13 @@ import { FaEnvelope } from "react-icons/fa";
 
 export default function Contact() {
     return (
-        <footer className="bg-foreground text-background border-t border-muted px-20" id="contact">
-            <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-8">
+        <footer className="bg-black text-white text-background border-t border-muted px-20" id="contact">
+            <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between gap-8">
 
                 {/* Info */}
                 <div className="space-y-4">
                     <h2 className="text-2xl font-semibold">
-                        <span className="bg-primary text-background px-4 py-1.5 rounded-lg inline-block">
+                        <span className="bg-primary text-white px-4 py-1.5 rounded-lg inline-block">
                             Contáctame
                         </span>
                     </h2>
