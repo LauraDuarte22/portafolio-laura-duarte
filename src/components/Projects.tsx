@@ -42,6 +42,7 @@ const projects = [
     description:
       "Sitio web desarrollado para una agencia creativa y de estrategia digital. El proyecto se enfocó en comunicar su propuesta de valor a través de una experiencia visual clara, moderna y alineada con la identidad de marca.",
     image: "/images/posting.jpeg",
+    url: "https://posting.com.co",
   },
   {
     title: "Contact Center Grupo",
@@ -49,31 +50,34 @@ const projects = [
     description:
       "Plataforma institucional para una empresa BPO especializada en soluciones de Contact Center y transformación digital, destacando servicios de omnicanalidad, inteligencia artificial y análisis de datos.",
     image: "/images/ccgrupo.jpeg",
+    url: "http://ccgrupo.com.co/",
   },
   {
     title: "Automatización de Respuestas en Instagram",
     type: "Automatización" as ProjectType,
     description:
-      "Automatización inteligente que gestiona comentarios en Instagram en tiempo real. El flujo clasifica la intención del usuario y responde automáticamente con mensajes empáticos, informativos o de agradecimiento mediante modelos de lenguaje.",
+      "Automatización inteligente que gestiona comentarios en Instagram en tiempo real. El flujo clasifica la intención del usuario y responde automáticamente mediante modelos de lenguaje, reduciendo carga operativa y mejorando la experiencia del usuario.",
     image: "/images/automation.jpeg",
   },
   {
     title: "ETL y Dashboards Automatizados",
     type: "Análisis de Datos" as ProjectType,
     description:
-      "Diseño e implementación de procesos ETL para la extracción automática de datos y alimentación de tableros de control, permitiendo análisis confiables y soporte a la toma de decisiones estratégicas.",
+      "Diseño e implementación de procesos ETL para la extracción automática de datos y alimentación de tableros de control confiables, apoyando la toma de decisiones basada en datos.",
   },
   {
     title: "Justicia Racial",
     type: "Desarrollo Web" as ProjectType,
     description:
-      "Desarrollo de plataforma web para un equipo de abogados defensores de derechos humanos, orientada a visibilizar procesos de justicia social, litigio estratégico y acompañamiento comunitario.",
+      "Plataforma web para un equipo de abogados defensores de derechos humanos, enfocada en visibilizar procesos de justicia social, litigio estratégico y acompañamiento comunitario.",
+    url: "http://justiciaracial.org/",
   },
   {
     title: "Mataron al Río",
     type: "Proyecto Académico" as ProjectType,
     description:
-      "Proyecto web interactivo creado como apoyo a una tesis universitaria, enfocado en la narración de crónicas digitales mediante una experiencia visual cuidada y narrativa.",
+      "Proyecto web interactivo creado como apoyo a una tesis universitaria, centrado en la narración de crónicas digitales mediante una experiencia visual cuidada.",
+    url: "https://mataron-al-rio-drab.vercel.app/",
   },
 ];
 
@@ -147,12 +151,27 @@ export default function Projects() {
               <p className="text-foreground/80 mt-3 leading-relaxed">
                 {project.description}
               </p>
+
+              {/* Link */}
+              {project.url && (
+                <div className="mt-6">
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium
+                               text-primary hover:underline transition"
+                  >
+                    Ver proyecto →
+                  </a>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
 
-        {/* Cierre */}
-        
+        {/* Footer */}
+      
       </div>
     </section>
   );
