@@ -1,7 +1,9 @@
+
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import {
   HiOutlineChartBar,
   HiOutlineCog,
@@ -9,13 +11,19 @@ import {
   HiOutlineAcademicCap,
 } from "react-icons/hi";
 
-const typeIcon: Record<string, JSX.Element> = {
+/* ======================
+   ICONOS POR TIPO
+====================== */
+const typeIcon: Record<string, ReactNode> = {
   "Desarrollo Web": <HiOutlineGlobeAlt size={32} />,
   "Análisis de Datos": <HiOutlineChartBar size={32} />,
   Automatización: <HiOutlineCog size={32} />,
   "Proyecto Académico": <HiOutlineAcademicCap size={32} />,
 };
 
+/* ======================
+   PROYECTOS
+====================== */
 const projects = [
   {
     title: "Posting",
@@ -40,32 +48,35 @@ const projects = [
     type: "Automatización",
     description:
       "Automatización inteligente para gestionar comentarios en Instagram en tiempo real, clasificando la intención del usuario y respondiendo de forma contextual mediante modelos de lenguaje.",
-    image: "/images/automation.jepg",
+    image: "/images/automation.jpeg",
     tags: ["n8n", "OpenAI", "Webhooks"],
   },
   {
     title: "ETL & Dashboards Automatizados",
     type: "Análisis de Datos",
     description:
-      "Procesos ETL para la extracción automática de datos y alimentación de tableros de control confiables, apoyando la toma de decisiones basada en datos.",
-    tags: ["SQL", "ETL", "Power BI"],
+      "Diseño e implementación de procesos ETL para la extracción automática de datos y la alimentación de tableros de control confiables que apoyan la toma de decisiones basada en datos.",
+    tags: ["SQL", "ETL", "Power BI", "Looker Studio"],
   },
   {
     title: "Justicia Racial",
     type: "Desarrollo Web",
     description:
-      "Plataforma web para un equipo de abogados defensores de derechos humanos, enfocada en visibilizar procesos de justicia social y acompañamiento comunitario.",
+      "Plataforma web para un equipo de abogados defensores de derechos humanos, orientada a visibilizar procesos de justicia social, litigio estratégico y acompañamiento comunitario en Colombia.",
     tags: ["React", "UX/UI"],
   },
   {
     title: "Mataron al Río",
     type: "Proyecto Académico",
     description:
-      "Proyecto web interactivo creado como apoyo a una tesis universitaria, enfocado en la narración de crónicas digitales con una experiencia visual cuidada.",
-    tags: ["Next.js", "Framer Motion"],
+      "Proyecto web interactivo creado como apoyo a una tesis universitaria, enfocado en la narración de crónicas digitales con una experiencia visual y de lectura cuidada.",
+    tags: ["Next.js", "Tailwind", "Framer Motion"],
   },
 ];
 
+/* ======================
+   COMPONENTE
+====================== */
 export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6 md:px-20">
@@ -109,9 +120,11 @@ export default function Projects() {
                   />
                 </div>
               ) : (
-                <div className="w-full h-44 rounded-xl mb-6 flex items-center justify-center
-                                bg-gradient-to-br from-primary/20 via-background to-secondary/20
-                                border border-muted/30">
+                <div
+                  className="w-full h-44 rounded-xl mb-6 flex items-center justify-center
+                             bg-gradient-to-br from-primary/20 via-background to-secondary/20
+                             border border-muted/30"
+                >
                   <div className="flex flex-col items-center gap-2 text-primary/70">
                     {typeIcon[project.type]}
                     <span className="text-xs uppercase tracking-widest">
@@ -121,21 +134,24 @@ export default function Projects() {
                 </div>
               )}
 
-              {/* Content */}
+              {/* Tipo */}
               <span className="text-xs uppercase tracking-wide text-primary">
                 {project.type}
               </span>
 
+              {/* Título */}
               <h3 className="text-2xl font-semibold mt-2 group-hover:text-primary transition">
                 {project.title}
               </h3>
 
+              {/* Descripción */}
               <p className="text-muted mt-3">
                 {project.description}
               </p>
 
+              {/* Tags */}
               <div className="flex flex-wrap gap-2 mt-5">
-                {project.tags.map(tag => (
+                {project.tags.map((tag) => (
                   <span
                     key={tag}
                     className="text-xs px-3 py-1 rounded-full border border-muted text-muted"
