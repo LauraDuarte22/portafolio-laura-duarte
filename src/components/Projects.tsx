@@ -1,9 +1,7 @@
-
 "use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import {
   HiOutlineChartBar,
   HiOutlineCog,
@@ -11,19 +9,19 @@ import {
   HiOutlineAcademicCap,
 } from "react-icons/hi";
 
-/* ======================
-   ICONOS POR TIPO
-====================== */
-const typeIcon: Record<string, ReactNode> = {
+type ProjectType =
+  | "Desarrollo Web"
+  | "Análisis de Datos"
+  | "Automatización"
+  | "Proyecto Académico";
+
+const typeIcon: Record<ProjectType, JSX.Element> = {
   "Desarrollo Web": <HiOutlineGlobeAlt size={32} />,
   "Análisis de Datos": <HiOutlineChartBar size={32} />,
   Automatización: <HiOutlineCog size={32} />,
   "Proyecto Académico": <HiOutlineAcademicCap size={32} />,
 };
 
-/* ======================
-   PROYECTOS
-====================== */
 const projects = [
   {
     title: "Posting",
@@ -32,16 +30,14 @@ const projects = [
       "Plataforma web desarrollada para una agencia creativa y de estrategia digital, enfocada en comunicar su propuesta de valor mediante una experiencia visual clara y alineada con la identidad de marca.",
     url: "https://posting.com.co",
     image: "/images/posting.jpeg",
-    tags: ["Next.js", "React", "Tailwind"],
   },
   {
     title: "Contact Center Grupo",
     type: "Desarrollo Web",
     description:
-      "Sitio institucional para una empresa BPO especializada en Contact Center y transformación digital, destacando servicios de omnicanalidad, inteligencia artificial y análisis de datos.",
+      "Sitio institucional para una empresa BPO especializada en Contact Center y transformación digital, resaltando servicios de omnicanalidad, inteligencia artificial y análisis de datos.",
     url: "http://ccgrupo.com.co/",
     image: "/images/ccgrupo.jpeg",
-    tags: ["HTML", "CSS", "JavaScript"],
   },
   {
     title: "Automatización de Respuestas en Instagram",
@@ -49,58 +45,45 @@ const projects = [
     description:
       "Automatización inteligente para gestionar comentarios en Instagram en tiempo real, clasificando la intención del usuario y respondiendo de forma contextual mediante modelos de lenguaje.",
     image: "/images/automation.jpeg",
-    tags: ["n8n", "OpenAI", "Webhooks"],
   },
   {
-    title: "ETL & Dashboards Automatizados",
+    title: "ETL y Dashboards Automatizados",
     type: "Análisis de Datos",
     description:
-      "Diseño e implementación de procesos ETL para la extracción automática de datos y la alimentación de tableros de control confiables que apoyan la toma de decisiones basada en datos.",
-    tags: ["SQL", "ETL", "Power BI", "Looker Studio"],
+      "Diseño de procesos ETL para la extracción automática de datos y alimentación de tableros de control, facilitando el análisis y la toma de decisiones basada en datos.",
   },
   {
     title: "Justicia Racial",
     type: "Desarrollo Web",
     description:
-      "Plataforma web para un equipo de abogados defensores de derechos humanos, orientada a visibilizar procesos de justicia social, litigio estratégico y acompañamiento comunitario en Colombia.",
-    tags: ["React", "UX/UI"],
+      "Plataforma web para un equipo de abogados defensores de derechos humanos, enfocada en visibilizar procesos de justicia social y acompañamiento comunitario.",
   },
   {
     title: "Mataron al Río",
     type: "Proyecto Académico",
     description:
-      "Proyecto web interactivo creado como apoyo a una tesis universitaria, enfocado en la narración de crónicas digitales con una experiencia visual y de lectura cuidada.",
-    tags: ["Next.js", "Tailwind", "Framer Motion"],
+      "Proyecto web interactivo desarrollado como apoyo a una tesis universitaria, centrado en la narración de crónicas digitales con una experiencia visual cuidada.",
   },
 ];
 
-/* ======================
-   COMPONENTE
-====================== */
 export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6 md:px-20">
       <div className="max-w-7xl mx-auto space-y-20">
-
         {/* Header */}
         <div className="max-w-2xl space-y-4">
-          <h2 className="text-4xl font-bold text-primary">
-            Proyectos
-          </h2>
+          <h2 className="text-4xl font-bold text-primary">Proyectos</h2>
           <p className="text-muted text-lg">
-            Proyectos reales donde he aplicado desarrollo web, análisis de datos
-            y automatización para resolver problemas concretos.
+            Proyectos reales donde he aplicado desarrollo web, análisis de datos y
+            automatización para resolver problemas concretos.
           </p>
         </div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {projects.map((project, i) => (
-            <motion.a
+            <motion.div
               key={project.title}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, amount: 0.3 }}
@@ -120,13 +103,11 @@ export default function Projects() {
                   />
                 </div>
               ) : (
-                <div
-                  className="w-full h-44 rounded-xl mb-6 flex items-center justify-center
-                             bg-gradient-to-br from-primary/20 via-background to-secondary/20
-                             border border-muted/30"
-                >
+                <div className="w-full h-44 rounded-xl mb-6 flex items-center justify-center
+                                bg-gradient-to-br from-primary/20 via-background to-secondary/20
+                                border border-muted/30">
                   <div className="flex flex-col items-center gap-2 text-primary/70">
-                    {typeIcon[project.type]}
+                    {typeIcon[project.type as ProjectType]}
                     <span className="text-xs uppercase tracking-widest">
                       {project.type}
                     </span>
@@ -134,43 +115,37 @@ export default function Projects() {
                 </div>
               )}
 
-              {/* Tipo */}
+              {/* Content */}
               <span className="text-xs uppercase tracking-wide text-primary">
                 {project.type}
               </span>
 
-              {/* Título */}
               <h3 className="text-2xl font-semibold mt-2 group-hover:text-primary transition">
                 {project.title}
               </h3>
 
-              {/* Descripción */}
-              <p className="text-muted mt-3">
+              <p className="text-foreground/80 mt-4 leading-relaxed">
                 {project.description}
               </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-muted text-muted"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.a>
+              {/* CTA */}
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-6 text-sm font-medium text-primary
+                             hover:underline transition"
+                >
+                  Ver proyecto →
+                </a>
+              )}
+            </motion.div>
           ))}
         </div>
 
-        {/* Cierre */}
-        <p className="text-center text-muted">
-          ¿Quieres ver cómo puedo aportar a tu proyecto?{" "}
-          <a href="#contact" className="text-primary underline">
-            Hablemos
-          </a>
-        </p>
+        {/* Footer */}
+        
       </div>
     </section>
   );
