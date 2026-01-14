@@ -27,14 +27,14 @@ export default function About() {
   return (
     <section id="about" className="py-12 px-6 md:px-20">
       <motion.div
-        variants={container}
+    
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-120px" }}
         className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
       >
         {/* Texto principal */}
-        <motion.div variants={item} className="space-y-6">
+        <motion.div className="space-y-6">
           <div className="inline-flex items-center gap-2 text-2xl text-primary font-medium">
             <span className="h-2 w-2 rounded-full bg-primary" />
             Sobre mí
@@ -59,7 +59,7 @@ export default function About() {
 
         {/* Cards de habilidades */}
         <motion.div
-          variants={item}
+       
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
         >
           <div className="rounded-xl border border-muted/40 bg-background/60 p-6 backdrop-blur">

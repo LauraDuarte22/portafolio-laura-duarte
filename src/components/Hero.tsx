@@ -43,7 +43,7 @@ export default function Hero() {
 
         {/* Imagen */}
         <motion.div
-          variants={imageAnim}
+       
           initial="hidden"
           animate="show"
           className="flex justify-center md:justify-start"
@@ -60,27 +60,27 @@ export default function Hero() {
 
         {/* Texto */}
         <motion.div
-          variants={container}
+      
           initial="hidden"
           animate="show"
           className="space-y-6"
         >
           <motion.h1
-            variants={item}
+            
             className="text-5xl md:text-6xl font-bold leading-tight"
           >
             Hola, soy <span className="text-primary">Laura</span>
           </motion.h1>
 
           <motion.span
-            variants={item}
+          
             className="text-sm text-primary uppercase tracking-wide block"
           >
             Ingeniera de Sistemas
           </motion.span>
 
           <motion.p
-            variants={item}
+          
             className="text-lg text-primary max-w-xl"
           >
             Desarrollo soluciones que integran{" "}
@@ -91,7 +91,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            variants={item}
+          
             className="flex flex-wrap gap-4 pt-4"
           >
             <a
@@ -127,9 +127,5 @@ export default function Hero() {
           <FaArrowDown size={24} className="text-gray-500 hover:text-gray-800 transition-colors" />
         </a>
       </motion.div>
-
-
     </section >
-
-  )
-}
+  )}
