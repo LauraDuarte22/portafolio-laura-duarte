@@ -23,7 +23,7 @@ const projects = [
     description:
       "Plataforma web desarrollada para una agencia creativa y de estrategia digital, enfocada en comunicar su propuesta de valor mediante una experiencia visual clara y alineada con la identidad de marca.",
     url: "https://posting.com.co",
-    image: "/images/posting.jepg",
+    image: "/images/posting.jpeg",
     tags: ["Next.js", "React", "Tailwind"],
   },
   {
@@ -32,7 +32,7 @@ const projects = [
     description:
       "Sitio institucional para una empresa BPO especializada en Contact Center y transformación digital, destacando servicios de omnicanalidad, inteligencia artificial y análisis de datos.",
     url: "http://ccgrupo.com.co/",
-    image: "/images/ccgrupo.jepg",
+    image: "/images/ccgrupo.jpeg",
     tags: ["HTML", "CSS", "JavaScript"],
   },
   {
