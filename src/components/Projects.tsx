@@ -132,8 +132,7 @@ export default function Projects() {
                             viewport={{ once: false, amount: 0.3 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.05 }}
                             whileHover={{ y: -6 }}
-                            className="group rounded-2xl border border-muted/30 bg-background/60
-                         backdrop-blur-xl p-8 shadow-lg transition"
+                            className="group rounded-2xl border border-muted/30 bg-background/60 backdrop-blur-xl p-8 shadow-lg transition"
                         >
                             {/* Imagen o placeholder */}
                             {project.image ? (
@@ -191,7 +190,7 @@ export default function Projects() {
                     ))}
                 </div>
 
-                {/* Footer */}
+                
 
             </div>
         </section>

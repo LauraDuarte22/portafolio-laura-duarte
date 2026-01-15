@@ -6,7 +6,7 @@ import { FaArrowDown } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center px-6 md:px-20 mt-20">
+    <section className="flex flex-col items-center px-6 md:px-20 mt-40">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-[40%_60%] items-center">
 
         {/* Imagen */}

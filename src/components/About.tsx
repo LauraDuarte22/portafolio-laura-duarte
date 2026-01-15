@@ -5,7 +5,7 @@ import { FaArrowDown } from "react-icons/fa";
 
 export default function About() {
   return (
-    <section id="about" className="py-6 px-6 md:px-20">
+    <section id="about" className="py-12 px-6 md:px-20">
       <motion.div
         initial="hidden"
         whileInView="show"
