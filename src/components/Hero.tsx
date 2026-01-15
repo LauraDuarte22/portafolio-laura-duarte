@@ -90,7 +90,7 @@ export default function Hero() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="flex justify-center mt-12"
+        className=" justify-center mt-12 sm:hidden md:flex"
       >
         <a href="#about">
           <FaArrowDown size={24} className="text-primary hover:opacity-80 transition" />

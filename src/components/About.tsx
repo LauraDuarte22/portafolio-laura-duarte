@@ -15,7 +15,7 @@ export default function About() {
         {/* Texto principal */}
         <motion.div className="space-y-6">
           <div className="inline-flex items-center gap-2 text-2xl text-primary font-medium">
-            <span className="h-2 w-2 rounded-full bg-primary" />
+            <span className="text-4xl font-bold text-primary" />
             Sobre mí
           </div>
 
@@ -104,7 +104,7 @@ export default function About() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="flex justify-center mt-12"
+        className=" justify-center mt-12 sm:hidden md:flex"
       >
         <a href="#projects">
           <FaArrowDown size={24} className="text-primary hover:opacity-80 transition" />
